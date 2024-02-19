@@ -1,13 +1,26 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { signInUser } from "../../services/user.api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../assets/Logo.png";
 
 function SignIn() {
+  const [inputDate, setInputData] = useState({
+    email: "",
+    password: "",
+  });
+  const onChange = (e) => {
+    e.preventDefault();
+    setInputData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
   const [showPassword, setShowPassword] = useState(false);
   const onSubmit = (e) => {
     e.preventDefault();
+    signInUser(inputDate);
   };
   return (
     <div className="h-screen flex flex-col justify-center items-center p-4 md:p-0">
@@ -25,6 +38,9 @@ function SignIn() {
             className="p-2 rounded-lg border border-gray-300"
             type="email"
             placeholder="example@email.com"
+            id="email"
+            onChange={onChange}
+            required
           />
         </div>
         <div className="flex flex-col gap-4 relative">
@@ -33,6 +49,9 @@ function SignIn() {
             className="p-2 rounded-lg border border-gray-300"
             type={showPassword ? "text" : "password"}
             placeholder={showPassword ? "Password" : "********"}
+            id="password"
+            onChange={onChange}
+            required
           />
           <button onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? (

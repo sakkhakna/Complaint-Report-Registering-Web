@@ -3,17 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
+import { SignUpUser } from "../../services/user.api";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [inputData, setInputData] = useState({
-    firstName: "",
-    lastName: "",
-    gender: "",
-    schoolName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    // firstName: "",
+    // lastName: "",
+    Name: "",
+    // gender: "",
+    // schoolName: "",
+    Email: "",
+    Password: "",
+    ConfirmPassword: "",
   });
   const onChange = (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ function SignUp() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    SignUpUser(inputData);
   };
   return (
     <div className="h-screen flex justify-center items-center p-4 md:p-0">
@@ -35,7 +38,7 @@ function SignUp() {
           <img src={Logo} alt="Logo" width={100} />
           <h1 className="text-2xl md:text-4xl font-bold">Sign Up</h1>
         </div>
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <div className="flex flex-col gap-4">
             <label htmlFor="firstName">First Name</label>
             <input
@@ -56,6 +59,16 @@ function SignUp() {
               className="border rounded-lg border-gray-300 p-2 w-full"
             />
           </div>
+        </div> */}
+        <div className="flex flex-col gap-4">
+          <label htmlFor="Name">Username</label>
+          <input
+            id="Name"
+            onChange={onChange}
+            type="text"
+            placeholder="Username"
+            className="border rounded-lg border-gray-300 p-2 w-full"
+          />
         </div>
         <div className="flex gap-4">
           <div className="flex flex-col gap-4 w-full">
@@ -80,57 +93,64 @@ function SignUp() {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="Email">Email</label>
           <input
-            id="email"
+            id="Email"
             onChange={onChange}
             type="email"
-            placeholder="example@email.com"
+            placeholder="example@Email.com"
             className="p-2 rounded-lg border border-gray-300"
           />
         </div>
-        <div className="flex flex-col gap-4 relative">
+        <div className="flex flex-col gap-4">
           <label>Password</label>
-          <input
-            className="p-2 rounded-lg border border-gray-300"
-            type={showPassword ? "text" : "password"}
-            placeholder={showPassword ? "Password" : "********"}
-          />
-          <button onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? (
-              <FontAwesomeIcon
-                icon={faEyeSlash}
-                className="absolute top-[53px] right-2"
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faEye}
-                className="absolute top-[53px] right-2"
-              />
-            )}
-          </button>
+          <div className="relative">
+            <input
+              id="Password"
+              onChange={onChange}
+              className="p-2 rounded-lg border border-gray-300 w-full"
+              type={showPassword ? "text" : "password"}
+              placeholder={showPassword ? "Password" : "********"}
+            />
+            <button onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? (
+                <FontAwesomeIcon
+                  icon={faEyeSlash}
+                  className="absolute top-[13px] right-2"
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faEye}
+                  className="absolute top-[13px] right-2"
+                />
+              )}
+            </button>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 relative">
+        <div className="flex flex-col gap-4">
           <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            id="confirmPassword"
-            className="p-2 rounded-lg border border-gray-300"
-            type={showPassword ? "text" : "password"}
-            placeholder={showPassword ? "Confirm Password" : "********"}
-          />
-          <button onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? (
-              <FontAwesomeIcon
-                icon={faEyeSlash}
-                className="absolute top-[53px] right-2"
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faEye}
-                className="absolute top-[53px] right-2"
-              />
-            )}
-          </button>
+          <div className="relative">
+            <input
+              id="ConfirmPassword"
+              onChange={onChange}
+              className="p-2 rounded-lg border border-gray-300 w-full"
+              type={showPassword ? "text" : "password"}
+              placeholder={showPassword ? "Confirm Password" : "********"}
+            />
+            <button onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? (
+                <FontAwesomeIcon
+                  icon={faEyeSlash}
+                  className="absolute top-[13px] right-2"
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faEye}
+                  className="absolute top-[13px] right-2"
+                />
+              )}
+            </button>
+          </div>
         </div>
         <button
           type="submit"
