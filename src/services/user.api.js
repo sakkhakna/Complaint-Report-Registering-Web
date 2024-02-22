@@ -12,7 +12,7 @@ export const testApi = async () => {
     });
 };
 
-export const SignUpUser = (inputData) => {
+export const signUpUser = async (inputData) => {
   axios
     .post("http://localhost:5023/api/Account/sign-up", inputData)
     .then((response) => {
@@ -23,13 +23,21 @@ export const SignUpUser = (inputData) => {
     });
 };
 
-export const signInUser = (inputData) => {
-  axios
+export const signInUser = async (inputData) => {
+  return axios
     .post("http://localhost:5023/api/Account/sign-in", inputData)
     .then((response) => {
+      console.log(response.data);
       Cookies.set("token", response.data.token, { expires: 7, secure: true });
+      return response.data.flag;
     })
     .catch((error) => {
-      console.error("There was an error!", error);
+      console.log(error);
+      if (error.response) {
+        console.log(error.response.data);
+        return error.response.data.flag;
+      } else {
+        console.log("Error", error.message);
+      }
     });
 };

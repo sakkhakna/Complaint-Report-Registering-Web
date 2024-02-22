@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signInUser } from "../../services/user.api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,9 +18,16 @@ function SignIn() {
     }));
   };
   const [showPassword, setShowPassword] = useState(false);
-  const onSubmit = (e) => {
+  const navigate = useNavigate();
+  const onSubmit = async (e) => {
     e.preventDefault();
-    signInUser(inputDate);
+    const res = await signInUser(inputDate);
+    console.log(res);
+    if (res === true) {
+      navigate("/");
+    } else {
+      alert("Error!");
+    }
   };
   return (
     <div className="h-screen flex flex-col justify-center items-center p-4 md:p-0">

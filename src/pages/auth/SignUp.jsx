@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
-import { SignUpUser } from "../../services/user.api";
+import { signUpUser } from "../../services/user.api";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,9 +24,10 @@ function SignUp() {
       [e.target.id]: e.target.value,
     }));
   };
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    SignUpUser(inputData);
+    const res = signUpUser(inputData);
   };
   return (
     <div className="h-screen flex justify-center items-center p-4 md:p-0">

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
+import ProtectedRoute from "./pages/auth/ProtectedRoute";
 import AppLayout from "./ui/AppLayout";
 
 const queryClient = new QueryClient();
@@ -12,8 +13,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
-          <Route path="/" element={<AppLayout />}>
-            <Route path="/" element={<Home />} />
+          <Route path="/" element={<ProtectedRoute />}>
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<Home />} />
+            </Route>
           </Route>
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
