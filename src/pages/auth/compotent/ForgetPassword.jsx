@@ -1,8 +1,8 @@
-import React from 'react'
-import Input from '../../../ui/share/Input';
-import Button from '../../../ui/share/Button';
-import Logo from '../../../assets/Logo.png';
-import { Navigate, useNavigate } from 'react-router-dom';
+import React from "react";
+import Input from "../../../ui/shared/Input";
+import Button from "../../../ui/shared/Button";
+import Logo from "../../../assets/Logo.png";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function ForgetPassword() {
   const onSubmit = (e) => {
@@ -11,7 +11,7 @@ function ForgetPassword() {
   const Navigate = useNavigate();
   const NavigateLogin = () => {
     Navigate("/");
-  }
+  };
   return (
     <div className="h-screen flex flex-col justify-center items-center p-4 md:p-0">
       <form
@@ -22,19 +22,19 @@ function ForgetPassword() {
           <img src={Logo} alt="Logo" width={100} />
           <h1 className="text-xl md:text-2xl font-bold">Reset Password</h1>
         </div>
-          <Input
-            title="Please Enter Your Email Below"
-            id="email"
-            placeholder="example@gmail.com"
-            onChange={onchange}
-            type="email"
-            isRequired={true}
-          />
-        <div className='flex gap-4'>
-        <Button 
-        onClick={NavigateLogin}
-        customClass="md:w-full">Cancel</Button>
-        <Button customClass="md:w-full">Sent</Button>
+        <Input
+          title="Please Enter Your Email Below"
+          id="email"
+          placeholder="example@gmail.com"
+          onChange={onchange}
+          type="email"
+          isRequired={true}
+        />
+        <div className="flex gap-4">
+          <Button onClick={NavigateLogin} customClass="md:w-full">
+            Cancel
+          </Button>
+          <Button customClass="md:w-full">Sent</Button>
         </div>
       </form>
     </div>

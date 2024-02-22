@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Logo from "../../../assets/Logo.png";
-import Input from "../../../ui/share/Input";
-import Button from "../../../ui/share/Button";
+import Input from "../../../ui/shared/Input";
+import Button from "../../../ui/shared/Button";
 
 function SignUp({ setAuthOption, setLoading }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -53,12 +53,12 @@ function SignUp({ setAuthOption, setLoading }) {
           />
         </div>
         <div className="flex flex-col gap-4">
-            <label htmlFor="gender">Gender</label>
-            <select class="form-select block rounded-xl w-full py-2 px-4 border-2 ">
-              <option>Select</option>
-              <option>Male</option>
-              <option>Female</option>
-            </select>
+          <label htmlFor="gender">Gender</label>
+          <select class="form-select block rounded-xl w-full py-2 px-4 border-2 ">
+            <option>Select</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
         </div>
         <Input
           title="Email"

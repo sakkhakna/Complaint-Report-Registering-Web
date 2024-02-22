@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/Logo.png";
-import Input from "../../../ui/share/Input";
-import Button from "../../../ui/share/Button";
+import Input from "../../../ui/shared/Input";
+import Button from "../../../ui/shared/Button";
 
 function SignIn({ setAuthOption }) {
   const onSubmit = (e) => {

@@ -1,12 +1,14 @@
 import React from "react";
-import Input from "../../ui/share/Input";
-import Button from "../../ui/share/Button"
+import Input from "../../ui/shared/Input";
+import Button from "../../ui/shared/Button";
 
-function registerForm() {
+function RegisterForm() {
   return (
-    <div className="max-w-screen-xl h-auto flex flex-col items-center p-10">
-      <form className="md:w-[1000px] md:h-[900px] bg-white flex flex-col items-center p-10 gap-4">
-        <h1 className="font-bold md:text-4xl ">Register Complaint</h1>
+    <div className="p-10">
+      <form className="max-w-5xl mx-auto bg-white flex flex-col items-center p-10 gap-4">
+        <h1 className="font-bold text-2xl md:text-4xl mb-4 md:mb-10">
+          Register Complaint
+        </h1>
         <div className="flex gap-4 w-full justify-center">
           <div className="w-1/2">
             <Input
@@ -20,7 +22,10 @@ function registerForm() {
           </div>
           <div className="flex flex-col gap-2 w-1/2">
             <label htmlFor="gender">Type</label>
-            <select className="form-select block rounded-xl w-full py-2 px-4 border-2 ">
+            <select
+              className="form-select block rounded-xl w-full py-2 px-4 border-2"
+              required
+            >
               <option>Select</option>
               <option>1</option>
               <option>2</option>
@@ -41,10 +46,15 @@ function registerForm() {
           />
         </div>
         <div className="w-full flex flex-col gap-2">
-            <label >Description</label>
-          <textarea name="description" id="description" rows="5" className="p-4 border-2 rounded-xl"></textarea>
+          <label>Description</label>
+          <textarea
+            name="description"
+            id="description"
+            rows="5"
+            className="p-4 border-2 rounded-xl"
+            required
+          ></textarea>
         </div>
-
         <div className="w-full">
           <Input
             title="Image && Proof"
@@ -55,16 +65,10 @@ function registerForm() {
             customClass="h-[200px] bg-[#ffffff]"
           />
         </div>
-
-        <Button
-        type="submit"
-        customClass="py-2 px-10 h-20"
-        >
-            Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );
 }
 
-export default registerForm;
+export default RegisterForm;
